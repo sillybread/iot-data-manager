@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
 
@@ -35,7 +34,7 @@ db.mongoose
     });
 
 //static views
-app.use(express.static(__dirname + "/app/views"));
+app.use("/", express.static(__dirname + "/app/views"));
 
 // routes
 require("./app/routes/auth.routes")(app);

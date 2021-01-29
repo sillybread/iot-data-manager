@@ -1,1 +1,42 @@
-Hello world
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IoT CTU</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center pb-5 pt-3">Trang chủ</h1>
+            <a id="btnLogout" href="#" class="text-center">Đăng xuất</a>
+        </div>
+    </div>
+    <script>
+        let goToSigninPage = () => window.location.href = "/signin.html";
+        let accessToken = /accessToken\=(.+?)(?:$|;)/.exec(document.cookie);
+        if (accessToken)
+            fetch('api/authJwt', {
+                headers: {
+                    'x-access-token': accessToken[1]
+                },
+                method: 'POST'
+            }).then(res => {
+                if (res.status === 200) {
+
+                } else
+                    goToSigninPage();
+            })
+        else
+            goToSigninPage();
+        document.getElementById("btnLogout").onclick = () => {
+            document.cookie = "accessToken=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            goToSigninPage();
+        }
+    </script>
+</body>
+
+</html>

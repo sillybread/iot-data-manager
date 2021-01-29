@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Đăng nhập</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="col-12 text-center pb-5 pt-3">Đăng nhập</h1>
+    </div>
+    <form id="loginForm" class="container fixed-bottom" method="POST" action="/api/auth/signin">
+        <div class="row">
+            <div class="row col-12">
+                <div id="message" class="text-center">
+                    Nhập tên tài khoản và mật khẩu để đăng nhập hoặc click vào <a href="./signup.html">đây</a> để đăng ký.
+                </div>
+            </div>
+            <div class="col-7">
+                <input id="usr" name="username" type="input" placeholder="Tài khoản" class="row col-12 m-3" value="nqtoan" />
+                <input id="pwd" name="password" type="password" placeholder="Mật khẩu" class="row col-12 m-3" value="123456" />
+            </div>
+            <input type="submit" class="col-4 m-3 left" value="Đăng nhập" />
+        </div>
+    </form>
+    <script src="./statics/auth.js"></script>
+</body>
+
+</html>
