@@ -59,6 +59,11 @@ function signupHandle() {
             eMessage.innerText = "Hãy điền vào tất cả các trường!";
             return;
         }
+        let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(eml)) {
+            eMessage.innerText = "Hãy nhập email đúng định dạng!";
+            return;
+        }
         let sData = `username=${usr}&password=${pwd}&email=${eml}`;
         eMessage.innerText = "Đang đăng ký...";
         fetch(e.target.action, {
