@@ -12,7 +12,7 @@
     <div class="container">
         <h1 class="col-12 text-center pb-5 pt-3">Đăng nhập</h1>
     </div>
-    <form id="loginForm" class="container fixed-bottom" method="POST" action="/api/auth/signin">
+    <form id="signinForm" class="container fixed-bottom" method="POST" action="/api/auth/signin">
         <div class="row">
             <div class="row col-12">
                 <div id="message" class="text-center">
@@ -27,6 +27,9 @@
         </div>
     </form>
     <script src="./statics/auth.js"></script>
+    <script>
+        signinHandle();
+    </script>
 </body>
 
 </html>
