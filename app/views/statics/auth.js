@@ -1,4 +1,26 @@
 const _idToElement = (id) => document.getElementById(id);
+let _goToSigninPage = () => window.location.href = "/signin.html";
+
+function tokenCheck() {
+    let accessToken = /accessToken\=(.+?)(?:$|;)/.exec(document.cookie);
+    if (accessToken)
+        fetch('api/authJwt', {
+            headers: {
+                'x-access-token': accessToken[1]
+            },
+            method: 'POST'
+        }).then(res => {
+            if (res.status !== 200)
+                _goToSigninPage();
+        })
+    else
+        _goToSigninPage();
+}
+
+function logout() {
+    document.cookie = "accessToken=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    _goToSigninPage();
+}
 
 function signinHandle() {
     _idToElement("usr").focus();
